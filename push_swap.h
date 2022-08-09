@@ -1,38 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: naharagu <naharagu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/06 21:18:04 by naharagu          #+#    #+#             */
-/*   Updated: 2022/08/07 23:24:48 by naharagu         ###   ########.fr       */
+/*   Created: 2022/08/03 22:54:50 by naharagu          #+#    #+#             */
+/*   Updated: 2022/08/07 22:45:50 by naharagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
-t_info	*initialize_info(t_info *info)
+# include "libft/libft.h"
+# include <stdlib.h>
+
+# define SA 1
+# define SB 2
+# define PA 3
+# define PB 4
+# define RA 5
+# define RB 6
+# define RRA 7
+# define RRB 8
+
+typedef struct s_list
 {
-	info = malloc(sizeof(t_info));
-	if (!info)
-		exit(1);
-	info->size = 0;
-	info->list_a = NULL;
-	info->list_b = NULL;
-	return (info);
-}
+	int				value;
+	struct s_list	*next;
+	struct s_list	*prev;
+}					t_list;
 
-void	push_swap(char **argv)
+typedef struct s_info
 {
-	char	**tmp;
-	t_info	*info;
+	struct s_list	*list_a;
+	struct s_list	*list_b;
+	int				size;
+}					t_info;
 
-	info = initialize_info(info);
-	info->size = ft_lstsize(info->list_a);
-	if (info->size < 10)
-		sort_small(info);
-	else
-		sort_big(info);
-	return ;
-}
+#endif

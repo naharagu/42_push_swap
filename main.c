@@ -1,38 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: naharagu <naharagu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/06 21:18:04 by naharagu          #+#    #+#             */
-/*   Updated: 2022/08/07 23:24:48 by naharagu         ###   ########.fr       */
+/*   Created: 2022/08/06 21:17:57 by naharagu          #+#    #+#             */
+/*   Updated: 2022/08/07 22:48:21 by naharagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_info	*initialize_info(t_info *info)
+int	return_error(void)
 {
-	info = malloc(sizeof(t_info));
-	if (!info)
-		exit(1);
-	info->size = 0;
-	info->list_a = NULL;
-	info->list_b = NULL;
-	return (info);
+	ft_putstr_fd("Error\n", 2);
+	return (0);
 }
 
-void	push_swap(char **argv)
+int	validate_arg(int argc, char **argv)
 {
-	char	**tmp;
-	t_info	*info;
+	return (1);
+}
 
-	info = initialize_info(info);
-	info->size = ft_lstsize(info->list_a);
-	if (info->size < 10)
-		sort_small(info);
-	else
-		sort_big(info);
-	return ;
+int	is_sorted(char **argv)
+{
+	return (0);
+}
+
+int	main(int argc, char **argv)
+{
+	if (argc < 2)
+		return (0);
+	if (!validate_arg(argc, argv))
+		return (return_error());
+	if (!is_sorted(argv))
+		push_swap(argv);
+	return (0);
 }

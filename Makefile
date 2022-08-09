@@ -6,14 +6,13 @@ CFLAGS	= -Wall -Wextra -Werror -I$(LIFBT)
 
 SRCS	= push_swap.c
 
-NAME	= push_swap.a
+NAME	= push_swap
 
 OBJS	= ${SRCS:%.c=%.o}
 
 $(NAME): $(OBJS)
 	make -C $(LIFBT)
 	cp $(LIFBT)/libft.a $(NAME)
-	ar rc $(NAME) $(OBJS)
 
 all: $(NAME)
 
