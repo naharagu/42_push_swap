@@ -6,7 +6,7 @@
 /*   By: naharagu <naharagu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 21:17:57 by naharagu          #+#    #+#             */
-/*   Updated: 2022/08/07 22:48:21 by naharagu         ###   ########.fr       */
+/*   Updated: 2022/08/09 21:08:27 by naharagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ int	is_sorted(char **argv)
 
 int	main(int argc, char **argv)
 {
-	if (argc < 2)
-		return (0);
-	if (!validate_arg(argc, argv))
-		return (return_error());
-	if (!is_sorted(argv))
+	// if (argc < 2)
+	// 	return (0);
+	// if (!validate_arg(argc, argv))
+	// 	return (return_error());
+	// if (!is_sorted(argv))
 		push_swap(argv);
 	return (0);
 }
