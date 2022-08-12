@@ -3,7 +3,7 @@ CC		= gcc
 LIFBT	= ./libft
 
 #CFLAGS	= -Wall -Wextra -Werror -I$(LIFBT)
-CFLAGS	= -g -fsanitize=address
+CFLAGS	= -g -fsanitize=address #delete later
 
 SRCS	= main.c push_swap.c ft_dc_list.c
 

@@ -6,7 +6,7 @@
 /*   By: naharagu <naharagu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 22:54:50 by naharagu          #+#    #+#             */
-/*   Updated: 2022/08/10 13:28:23 by naharagu         ###   ########.fr       */
+/*   Updated: 2022/08/10 14:18:45 by naharagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_info
 	struct s_dc_list	*list_a;
 	struct s_dc_list	*list_b;
 	int				size;
+	int				*output;
 }					t_info;
 
 void		push_swap(char **argv);

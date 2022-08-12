@@ -6,7 +6,7 @@
 /*   By: naharagu <naharagu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 21:18:04 by naharagu          #+#    #+#             */
-/*   Updated: 2022/08/10 13:34:16 by naharagu         ###   ########.fr       */
+/*   Updated: 2022/08/11 12:40:57 by naharagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@ t_info	*initialize_info(t_info *info)
 	info = malloc(sizeof(t_info));
 	if (!info)
 		exit(1);
-	info->size = 0;
 	info->list_a = NULL;
 	info->list_b = NULL;
+	info->size = 0;
+	info->output= malloc(sizeof(int*));
 	return (info);
 }
 
@@ -37,9 +38,13 @@ void convert_to_list(char **argv, t_info *info)
 		ft_dc_lstadd_back(&info->list_a, tmp);
 		i++;
 	}
+	info->size = i - 1;
+	// printf("size is: %d\n", info->size);
+
 	tmp = ft_dc_lstlast(info->list_a);
 	tmp->next = info->list_a;
 	info->list_a->prev = tmp;
+
 	// printf("%d\n", info->list_a->content);
 	// printf("%d\n", info->list_a->next->content);
 	// printf("%d\n", info->list_a->prev->content);
