@@ -6,7 +6,7 @@
 /*   By: naharagu <naharagu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 22:54:50 by naharagu          #+#    #+#             */
-/*   Updated: 2022/08/10 14:18:45 by naharagu         ###   ########.fr       */
+/*   Updated: 2022/10/04 11:00:38 by naharagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,8 @@ void		push_swap(char **argv);
 t_dc_list	*ft_dc_lstnew(int content);
 t_dc_list	*ft_dc_lstlast(t_dc_list *lst);
 void		ft_dc_lstadd_back(t_dc_list **lst, t_dc_list *new);
+void		operate_sa(t_info *info);
+void		operate_sb(t_info *info);
+void		operate_ss(t_info *info);
 
 #endif

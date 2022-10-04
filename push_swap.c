@@ -6,7 +6,7 @@
 /*   By: naharagu <naharagu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 21:18:04 by naharagu          #+#    #+#             */
-/*   Updated: 2022/08/11 12:40:57 by naharagu         ###   ########.fr       */
+/*   Updated: 2022/10/04 11:01:38 by naharagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ t_info	*initialize_info(t_info *info)
 	info->list_a = NULL;
 	info->list_b = NULL;
 	info->size = 0;
-	info->output= malloc(sizeof(int*));
+	info->output = malloc(sizeof(int *));
 	return (info);
 }
 
-void convert_to_list(char **argv, t_info *info)
+void	convert_to_list(char **argv, t_info *info)
 {
 	size_t		i;
 	t_dc_list	*tmp;
@@ -39,14 +39,12 @@ void convert_to_list(char **argv, t_info *info)
 		i++;
 	}
 	info->size = i - 1;
-	// printf("size is: %d\n", info->size);
-
+	printf("size is: %d\n", info->size);
 	tmp = ft_dc_lstlast(info->list_a);
 	tmp->next = info->list_a;
 	info->list_a->prev = tmp;
-
-	// printf("%d\n", info->list_a->content);
-	// printf("%d\n", info->list_a->next->content);
+	printf("%d\n", info->list_a->content);
+	printf("%d\n", info->list_a->next->content);
 	// printf("%d\n", info->list_a->prev->content);
 }
 
@@ -56,7 +54,6 @@ void	push_swap(char **argv)
 
 	info = initialize_info(info);
 	convert_to_list(argv, info);
-
 	// if (info->size < 10)
 	// 	sort_small(info);
 	// else
