@@ -16,18 +16,18 @@ void operate_sa(t_info *info)
 {
 	int tmp;
 
-	tmp = info->list_a->content;
-	info->list_a->content = info->list_a->next->content;
-	info->list_a->next->content = tmp;
+	tmp = info->list_a->next->content;
+	info->list_a->next->content = info->list_a->next->next->content;
+	info->list_a->next->next->content = tmp;
 }
 
 void operate_sb(t_info *info)
 {
 	int tmp;
 
-	tmp = info->list_b->content;
-	info->list_b->content = info->list_b->next->content;
-	info->list_b->next->content = tmp;
+	tmp = info->list_b->next->content;
+	info->list_b->next->content = info->list_b->next->next->content;
+	info->list_b->next->next->content = tmp;
 }
 
 void operate_ss(t_info *info)
