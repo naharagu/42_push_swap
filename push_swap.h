@@ -6,7 +6,7 @@
 /*   By: naharagu <naharagu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 22:54:50 by naharagu          #+#    #+#             */
-/*   Updated: 2022/11/02 21:05:59 by naharagu         ###   ########.fr       */
+/*   Updated: 2022/11/02 21:39:07 by naharagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,13 @@ void		push_swap(char **argv);
 void		operate_sa(t_info *info);
 void		operate_sb(t_info *info);
 void		operate_ss(t_info *info);
+void		operate_pa(t_info *info);
+void		operate_pb(t_info *info);
 void		operate_ra(t_info *info);
+void		operate_rb(t_info *info);
+void		operate_rr(t_info *info);
+void		operate_rra(t_info *info);
+void		operate_rrb(t_info *info);
+void		operate_rrr(t_info *info);
 
 #endif
