@@ -6,7 +6,7 @@
 /*   By: naharagu <naharagu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 22:54:50 by naharagu          #+#    #+#             */
-/*   Updated: 2022/10/04 11:00:38 by naharagu         ###   ########.fr       */
+/*   Updated: 2022/11/02 18:50:45 by naharagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,24 +27,15 @@
 # define RRA 7
 # define RRB 8
 
-typedef struct s_dc_list
-{
-	int				content;
-	struct s_dc_list	*next;
-	struct s_dc_list	*prev;
-}					t_dc_list;
 typedef struct s_info
 {
-	struct s_dc_list	*list_a;
-	struct s_dc_list	*list_b;
+	struct s_list	*list_a;
+	struct s_list	*list_b;
 	int				size;
 	int				*output;
 }					t_info;
 
 void		push_swap(char **argv);
-t_dc_list	*ft_dc_lstnew(int content);
-t_dc_list	*ft_dc_lstlast(t_dc_list *lst);
-void		ft_dc_lstadd_back(t_dc_list **lst, t_dc_list *new);
 void		operate_sa(t_info *info);
 void		operate_sb(t_info *info);
 void		operate_ss(t_info *info);

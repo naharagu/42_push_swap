@@ -32,6 +32,42 @@ void operate_sb(t_info *info)
 
 void operate_ss(t_info *info)
 {
-	operate_sa(info);
-	operate_sb(info);
+	operate_sa(info->list_a);
+	operate_sb(info->list_b);
 }
+
+// void operate_pa(t_info *info)
+// {
+// 	t_list tmp;
+
+// 	if (!info->list_b)
+// 		return;
+// 	// tmp = info->list_b;
+// 	// ft_lstadd_front(*info->list_b, info->list_a);
+// 	// info->list_b = info->list_b->next;
+
+// }
+
+// void operate_ra(t_info *info)
+// {
+// 	t_list tmp;
+
+// 	tmp = info->list_a->next;
+// 	info->list_a->next = NULL;
+// 	ft_lstadd_back(tmp, info->list_a);
+// 	info->list_a->next = NULL;
+// 	tmp = ft_lstlast(info->list_a);
+
+// 	tmp.next = info->list_a;
+// 	info->list_a->next = NULL;
+// }
+
+
+// void operate_rra(t_info *info)
+// {
+// 	t_list tmp;
+
+// 	tmp = ft_lstlast(info->list_a);
+// 	tmp.next = info->list_a;
+// 	info->list_a->next = NULL;
+// }

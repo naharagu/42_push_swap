@@ -6,7 +6,7 @@
 /*   By: naharagu <naharagu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 21:18:04 by naharagu          #+#    #+#             */
-/*   Updated: 2022/10/04 11:01:38 by naharagu         ###   ########.fr       */
+/*   Updated: 2022/11/02 20:48:59 by naharagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,25 +27,32 @@ t_info	*initialize_info(t_info *info)
 void	convert_to_list(char **argv, t_info *info)
 {
 	size_t		i;
-	t_dc_list	*tmp;
+	t_list	*tmp;
 	int			value;
 
+	tmp = ft_lstnew(NULL);
+	ft_lstadd_back(&info->list_a, tmp);
 	i = 1;
 	while (argv[i])
 	{
 		value = ft_atoi(argv[i]);
-		tmp = ft_dc_lstnew(value);
-		ft_dc_lstadd_back(&info->list_a, tmp);
+		tmp = ft_lstnew(value);
+		ft_lstadd_back(&info->list_a, tmp);
 		i++;
 	}
 	info->size = i - 1;
 	printf("size is: %d\n", info->size);
-	tmp = ft_dc_lstlast(info->list_a);
+	tmp = ft_lstlast(info->list_a);
 	tmp->next = info->list_a;
-	info->list_a->prev = tmp;
-	printf("%d\n", info->list_a->content);
-	printf("%d\n", info->list_a->next->content);
-	// printf("%d\n", info->list_a->prev->content);
+	printf("No. 0: %d\n", info->list_a->content);
+	printf("No. 1: %d\n", info->list_a->next->content);
+	printf("No. 2: %d\n", info->list_a->next->next->content);
+	printf("No. 3: %d\n", info->list_a->next->next->next->content);
+	operate_sa(info);
+	printf("No. 0: %d\n", info->list_a->content);
+	printf("No. 1: %d\n", info->list_a->next->content);
+	printf("No. 2: %d\n", info->list_a->next->next->content);
+	printf("No. 3: %d\n", info->list_a->next->next->next->content);
 }
 
 void	push_swap(char **argv)
