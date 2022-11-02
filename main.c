@@ -35,6 +35,6 @@ int	main(int argc, char **argv)
 	// if (!validate_arg(argc, argv))
 	// 	return (return_error());
 	// if (!is_sorted(argv))
-		push_swap(argv);
+	push_swap(argv);
 	return (0);
 }

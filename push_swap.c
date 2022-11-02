@@ -28,9 +28,9 @@ t_info	*initialize_info(t_info *info)
 
 void	convert_to_list(char **argv, t_info *info)
 {
-	size_t		i;
+	size_t	i;
 	t_list	*tmp;
-	int			value;
+	int		value;
 
 	i = 1;
 	while (argv[i])
@@ -55,7 +55,6 @@ void	convert_to_list(char **argv, t_info *info)
 	// printf("No. 4: %d\n", info->list_a->next->next->next->next->content);
 	printf("b No. 0: %d\n", info->list_b->content);
 	printf("b No. 1: %d\n", info->list_b->next->content);
-
 }
 
 void	push_swap(char **argv)
