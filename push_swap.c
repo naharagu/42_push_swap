@@ -6,13 +6,13 @@
 /*   By: naharagu <naharagu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 21:18:04 by naharagu          #+#    #+#             */
-/*   Updated: 2022/11/02 21:36:49 by naharagu         ###   ########.fr       */
+/*   Updated: 2022/11/02 21:44: by naharagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_info	*initialize_info(t_info *info)
+t_info	*init_info(t_info *info)
 {
 	info = malloc(sizeof(t_info));
 	if (!info)
@@ -41,7 +41,19 @@ void	convert_to_list(char **argv, t_info *info)
 		i++;
 	}
 	info->size = i - 1;
-	printf("size is: %d\n", info->size);
+}
+
+void	push_swap(char **argv)
+{
+	t_info	*info;
+
+	info = init_info(info);
+	convert_to_list(argv, info);
+	// if (info->size < 10)
+	// 	sort_small(info);
+	// else
+	// 	sort_big(info);
+
 	printf("No. 0: %d\n", info->list_a->content);
 	printf("No. 1: %d\n", info->list_a->next->content);
 	printf("No. 2: %d\n", info->list_a->next->next->content);
@@ -55,17 +67,6 @@ void	convert_to_list(char **argv, t_info *info)
 	// printf("No. 4: %d\n", info->list_a->next->next->next->next->content);
 	printf("b No. 0: %d\n", info->list_b->content);
 	printf("b No. 1: %d\n", info->list_b->next->content);
-}
-
-void	push_swap(char **argv)
-{
-	t_info	*info;
-
-	info = initialize_info(info);
-	convert_to_list(argv, info);
-	// if (info->size < 10)
-	// 	sort_small(info);
-	// else
-	// 	sort_big(info);
+	
 	return ;
 }
