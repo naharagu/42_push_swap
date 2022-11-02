@@ -6,7 +6,7 @@
 /*   By: naharagu <naharagu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 21:18:04 by naharagu          #+#    #+#             */
-/*   Updated: 2022/11/02 20:48:59 by naharagu         ###   ########.fr       */
+/*   Updated: 2022/11/02 21:13:40 by naharagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,17 @@ void	convert_to_list(char **argv, t_info *info)
 	}
 	info->size = i - 1;
 	printf("size is: %d\n", info->size);
-	tmp = ft_lstlast(info->list_a);
-	tmp->next = info->list_a;
 	printf("No. 0: %d\n", info->list_a->content);
 	printf("No. 1: %d\n", info->list_a->next->content);
 	printf("No. 2: %d\n", info->list_a->next->next->content);
 	printf("No. 3: %d\n", info->list_a->next->next->next->content);
-	operate_sa(info);
+	printf("No. 4: %d\n", info->list_a->next->next->next->next->content);
+	operate_ra(info);
 	printf("No. 0: %d\n", info->list_a->content);
 	printf("No. 1: %d\n", info->list_a->next->content);
 	printf("No. 2: %d\n", info->list_a->next->next->content);
 	printf("No. 3: %d\n", info->list_a->next->next->next->content);
+	printf("No. 4: %d\n", info->list_a->next->next->next->next->content);
 }
 
 void	push_swap(char **argv)

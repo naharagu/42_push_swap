@@ -48,26 +48,15 @@ void operate_ss(t_info *info)
 
 // }
 
-// void operate_ra(t_info *info)
-// {
-// 	t_list tmp;
+void operate_ra(t_info *info)
+{
+	t_list	*first;
+	t_list	*last;
 
-// 	tmp = info->list_a->next;
-// 	info->list_a->next = NULL;
-// 	ft_lstadd_back(tmp, info->list_a);
-// 	info->list_a->next = NULL;
-// 	tmp = ft_lstlast(info->list_a);
+	first = info->list_a->next;
+	last = ft_lstlast(info->list_a);
+	info->list_a->next = info->list_a->next->next;
+	last->next = first;
+	first->next = NULL;
+}
 
-// 	tmp.next = info->list_a;
-// 	info->list_a->next = NULL;
-// }
-
-
-// void operate_rra(t_info *info)
-// {
-// 	t_list tmp;
-
-// 	tmp = ft_lstlast(info->list_a);
-// 	tmp.next = info->list_a;
-// 	info->list_a->next = NULL;
-// }
