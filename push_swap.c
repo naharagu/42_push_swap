@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: naharagu <naharagu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/06 21:18:04 by naharagu          #+#    #+#             */
-/*   Updated: 2022/11/02 21:44: by naharagu         ###   ########.fr       */
+/*   Created: 2022/11/03 23:14:40 by naharagu          #+#    #+#             */
+/*   Updated: 2022/11/03 23:48:00 by naharagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,33 +44,6 @@ void	convert_to_list(char **argv, t_info *info)
 	}
 	info->len_all = i - 1;
 	info->len_a = i - 1;
-}
-
-void	put_result(t_info *info)
-{
-	int	i;
-
-	i = 0;
-	while (info->output[i])
-	{
-		if (info->output[i] == SA)
-			ft_putstr_fd("sa\n", 1);
-		else if (info->output[i] == SB)
-			ft_putstr_fd("sb\n", 1);
-		else if (info->output[i] == PA)
-			ft_putstr_fd("pa\n", 1);
-		else if (info->output[i] == PB)
-			ft_putstr_fd("pb\n", 1);
-		else if (info->output[i] == RA)
-			ft_putstr_fd("ra\n", 1);
-		else if (info->output[i] == RB)
-			ft_putstr_fd("rb\n", 1);
-		else if (info->output[i] == RRA)
-			ft_putstr_fd("rra\n", 1);
-		else if (info->output[i] == RRB)
-			ft_putstr_fd("rrb\n", 1);
-		i++;
-	}
 }
 
 int	get_min_index(t_list *list)
@@ -114,62 +87,6 @@ void	prepare_pb(t_info *info, int min_index)
 			min_index++;
 		}
 	}
-}
-
-void	selection_sort(t_info *info)
-{
-	int		min_index;
-	int		i;
-	t_list	*tmp;
-
-	while (info->len_a > 1)
-	{
-		min_index = get_min_index(info->list_a);
-		prepare_pb(info, min_index);
-		operate_pb(info);
-		i = 1;
-		tmp = info->list_a->next;
-		while (i <= info->len_a)
-		{
-			tmp = tmp->next;
-			i++;
-		}
-		i = 1;
-		tmp = info->list_b->next;
-		while (i <= info->len_b)
-		{
-			tmp = tmp->next;
-			i++;
-		}
-	}
-	while (info->len_b > 0)
-		operate_pa(info);
-}
-
-void	sort_three(t_info *info)
-{
-	int	first;
-	int	second;
-	int	third;
-
-	first = info->list_a->next->content;
-	second = info->list_a->next->next->content;
-	third = info->list_a->next->next->next->content;
-
-	if (first < second && first < third)
-	{
-		operate_sa(info);
-		if (second > third)
-			operate_ra(info);
-	}
-	else if (first > second && first > third)
-	{
-		operate_ra(info);
-		if (second > third)
-			operate_sa(info);
-	}
-	else if (first < second && second > third && first > third)
-		operate_rra(info);
 }
 
 void	push_swap(char **argv)

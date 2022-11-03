@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operator.c                                         :+:      :+:    :+:   */
+/*   operate_s_p.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: naharagu <naharagu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 19:25:05 by naharagu          #+#    #+#             */
-/*   Updated: 2022/11/03 22:15:23 by naharagu         ###   ########.fr       */
+/*   Updated: 2022/11/03 23:44:44 by naharagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,80 +90,4 @@ void	operate_pb(t_info *info)
 	info->out_count++;
 	info->len_a--;
 	info->len_b++;
-}
-
-void	operate_ra(t_info *info)
-{
-	t_list	*first;
-	t_list	*last;
-
-	first = info->list_a->next;
-	last = ft_lstlast(info->list_a);
-	info->list_a->next = info->list_a->next->next;
-	last->next = first;
-	first->next = NULL;
-	info->output[info->out_count] = RA;
-	info->out_count++;
-}
-
-void	operate_rb(t_info *info)
-{
-	t_list	*first;
-	t_list	*last;
-
-	first = info->list_b->next;
-	last = ft_lstlast(info->list_b);
-	info->list_b->next = info->list_b->next->next;
-	last->next = first;
-	first->next = NULL;
-	info->output[info->out_count] = RB;
-	info->out_count++;
-}
-
-void	operate_rr(t_info *info)
-{
-	operate_ra(info);
-	operate_rb(info);
-}
-
-void	operate_rra(t_info *info)
-{
-	t_list	*first;
-	t_list	*last;
-	t_list	*last_two;
-
-	first = info->list_a->next;
-	last = ft_lstlast(info->list_a);
-	last_two = info->list_a;
-	while (last_two->next->next)
-		last_two = last_two->next;
-	info->list_a->next = last;
-	last->next = first;
-	last_two->next = NULL;
-	info->output[info->out_count] = RRA;
-	info->out_count++;
-}
-
-void	operate_rrb(t_info *info)
-{
-	t_list	*first;
-	t_list	*last;
-	t_list	*last_two;
-
-	first = info->list_b->next;
-	last = ft_lstlast(info->list_b);
-	last_two = info->list_b;
-	while (last_two->next->next)
-		last_two = last_two->next;
-	info->list_b->next = last;
-	last->next = first;
-	last_two->next = NULL;
-	info->output[info->out_count] = RRB;
-	info->out_count++;
-}
-
-void	operate_rrr(t_info *info)
-{
-	operate_rra(info);
-	operate_rrb(info);
 }

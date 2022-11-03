@@ -1,15 +1,18 @@
-CC		= gcc
-
-LIFBT	= ./libft
-
-CFLAGS	= -Wall -Wextra -Werror -I$(LIFBT)
+CC		=	gcc
+LIFBT	= 	./libft
+CFLAGS	=	-Wall -Wextra -Werror -I$(LIFBT)
 # CFLAGS	= -g -fsanitize=address #delete later
+SRCS	= 	main.c \
+			check_errors.c \
+			push_swap.c \
+			operate_s_p.c \
+			operate_r.c \
+			operate_rr.c \
+			sort.c
 
-SRCS	= main.c push_swap.c operator.c
+NAME	=	push_swap
 
-NAME	= push_swap
-
-OBJS	= ${SRCS:%.c=%.o}
+OBJS	=	${SRCS:%.c=%.o}
 
 $(NAME): $(OBJS)
 	make -C $(LIFBT)
