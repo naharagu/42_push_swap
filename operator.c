@@ -50,14 +50,16 @@ void	operate_ss(t_info *info)
 void	operate_pa(t_info *info)
 {
 	t_list	*first;
+	t_list	*second;
 
 	if (info->len_b == 0)
 		return ;
 	first = info->list_b->next;
+	second = info->list_b->next->next;
 	if (info->len_b == 1)
 		info->list_b->next = NULL;
 	else
-		info->list_b->next = info->list_b->next->next;
+		info->list_b->next = second;
 	// ft_putstr_fd("!pb started!\n", 1);
 	// printf("first is : %d\n", first->content);
 	if (info->len_a  == 0)
@@ -69,22 +71,25 @@ void	operate_pa(t_info *info)
 	info->out_count++;
 	info->len_b--;
 	info->len_a++;
-	printf("len_a: %d\n", info->len_a);
-	printf("len_b: %d\n", info->len_b);
+	// printf("len_a: %d\n", info->len_a);
+	// printf("len_b: %d\n", info->len_b);
 	// ft_putstr_fd("!pb done!\n", 1);
 }
 
 void	operate_pb(t_info *info)
 {
 	t_list	*first;
+	t_list	*second;
+
 
 	if (info->len_a == 0)
 		return ;
 	first = info->list_a->next;
+	second = info->list_a->next->next;
 	if (info->len_a == 1)
 		info->list_a->next = NULL;
 	else
-		info->list_a->next = info->list_a->next->next;
+		info->list_a->next = second;
 	// ft_putstr_fd("!pb started!\n", 1);
 	// printf("first is : %d\n", first->content);
 	if (info->len_b  == 0)
@@ -96,8 +101,8 @@ void	operate_pb(t_info *info)
 	info->out_count++;
 	info->len_a--;
 	info->len_b++;
-	printf("len_a: %d\n", info->len_a);
-	printf("len_b: %d\n", info->len_b);
+	// printf("len_a: %d\n", info->len_a);
+	// printf("len_b: %d\n", info->len_b);
 	// ft_putstr_fd("!pb done!\n", 1);
 }
 
@@ -147,6 +152,7 @@ void	operate_rra(t_info *info)
 	while (last_two->next->next)
 		last_two = last_two->next;
 	// printf("last two is : %d\n", last_two->content);
+	// printf("last is: %d\n", last->content);
 	info->list_a->next = last;
 	last->next = first;
 	last_two->next = NULL;
