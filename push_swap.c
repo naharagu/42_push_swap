@@ -146,10 +146,31 @@ void	selection_sort(t_info *info)
 		operate_pa(info);
 }
 
-// void	sort_three(t_info *info)
-// {
+void	sort_three(t_info *info)
+{
+	int	first;
+	int	second;
+	int	third;
 
-// }
+	first = info->list_a->next->content;
+	second = info->list_a->next->next->content;
+	third = info->list_a->next->next->next->content;
+
+	if (first < second && first < third)
+	{
+		operate_sa(info);
+		if (second > third)
+			operate_ra(info);
+	}
+	else if (first > second && first > third)
+	{
+		operate_ra(info);
+		if (second > third)
+			operate_sa(info);
+	}
+	else if (first < second && second > third && first > third)
+		operate_rra(info);
+}
 
 void	push_swap(char **argv)
 {
@@ -162,8 +183,8 @@ void	push_swap(char **argv)
 		return ;
 	if (info->len_a == 2)
 		operate_sa(info);
-	// else if (info->len_a == 3)
-	// 	sort_three(info);
+	else if (info->len_a == 3)
+		sort_three(info);
 	else
 		selection_sort(info);
 	put_result(info);
