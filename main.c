@@ -6,7 +6,7 @@
 /*   By: naharagu <naharagu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 21:17:57 by naharagu          #+#    #+#             */
-/*   Updated: 2022/11/02 23:49:48 by naharagu         ###   ########.fr       */
+/*   Updated: 2022/11/02 23:55:42by naharagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,13 @@ int	check_int(char *str)
 	long long	n;
 
 	i = 0;
-	// if (str[i] == '-')
-	// 	i++;
-	printf("str is %s\n", str[i]);
+	if (str[i] == '-')
+		i++;
 	while (str[i])
 	{
-		printf("str is %s\n", str[i]);
-		// if (str[i] < '0' || str[i] > '9')
-		// 	return (-1);
-		// if (str[i])
+		if (str[i] < '0' || str[i] > '9')
+			return - 1;
+		if (str[i])
 			i++;
 	}
 	n = ft_atoi(str); //atoi is long long??
@@ -82,9 +80,9 @@ int	validate_arg(int argc, char **argv)
 	i = 1;
 	while (i < argc)
 	{
-		printf("arg is %s\n", argv[i]);
-		// if (check_int(argv[i]) == -1)
-		// 	return (-1);
+		// printf("arg is %s\n", argv[i]);
+		if (check_int(argv[i]) == -1)
+			return (-1);
 		i++;
 	}
 	if (check_sorted(argc, argv) == -1)
