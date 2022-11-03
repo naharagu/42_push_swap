@@ -140,22 +140,22 @@ void	selection_sort(t_info * info)
 		operate_pb(info);
 		// ft_putstr_fd("!pb done!\n", 1);
 
-		int i = 1;
-		t_list *tmp = info->list_a->next;
-		while (i <= info->len_a)
-		{
-			printf("a%d: %d\n", i, tmp->content);
-			tmp = tmp->next;
-			i++;
-		}
-		i = 1;
-		tmp = info->list_b->next;
-		while (i <= info->len_b)
-		{
-			printf("b%d: %d\n", i, tmp->content);
-			tmp = tmp->next;
-			i++;
-		}
+		// int i = 1;
+		// t_list *tmp = info->list_a->next;
+		// while (i <= info->len_a)
+		// {
+		// 	printf("a%d: %d\n", i, tmp->content);
+		// 	tmp = tmp->next;
+		// 	i++;
+		// }
+		// i = 1;
+		// tmp = info->list_b->next;
+		// while (i <= info->len_b)
+		// {
+		// 	printf("b%d: %d\n", i, tmp->content);
+		// 	tmp = tmp->next;
+		// 	i++;
+		// }
 	}
 	while (info->len_b > 0)
 		operate_pa(info);
@@ -172,9 +172,35 @@ void	push_swap(char **argv)
 	// if (info->size == 2)
 	// 	operate_sa(info);
 	// else if (info->size <= 10)
-		selection_sort(info);
 
+
+		// selection_sort(info);
+
+	operate_pb(info);
 	// operate_pb(info);
+	operate_pa(info);
+	// operate_pa(info);
+
+		operate_sa(info);
+
+		// operate_rr(info);
+
+		int i = 1;
+		t_list *tmp = info->list_a->next;
+		while (i <= info->len_a)
+		{
+			printf("a%d: %d\n", i, tmp->content);
+			tmp = tmp->next;
+			i++;
+		}
+		i = 1;
+		tmp = info->list_b->next;
+		while (i <= info->len_b)
+		{
+			printf("b%d: %d\n", i, tmp->content);
+			tmp = tmp->next;
+			i++;
+		}
 
 	put_result(info);
 	return ;
