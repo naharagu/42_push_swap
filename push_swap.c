@@ -176,12 +176,18 @@ void	push_swap(char **argv)
 
 		// selection_sort(info);
 
-	operate_pb(info);
 	// operate_pb(info);
-	operate_pa(info);
+	// operate_pb(info);
+	// operate_pa(info);
 	// operate_pa(info);
 
-		operate_sa(info);
+		// operate_rra(info);
+		operate_pb(info);
+		operate_pb(info);
+		operate_pb(info);
+		operate_pa(info);
+		operate_pa(info);
+		operate_pa(info);
 
 		// operate_rr(info);
 
@@ -201,6 +207,7 @@ void	push_swap(char **argv)
 			tmp = tmp->next;
 			i++;
 		}
+		ft_putchar_fd('\n', 2);
 
 	put_result(info);
 	return ;
