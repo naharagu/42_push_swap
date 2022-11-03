@@ -6,7 +6,7 @@
 /*   By: naharagu <naharagu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 23:37:13 by naharagu          #+#    #+#             */
-/*   Updated: 2022/11/03 23:37:44 by naharagu         ###   ########.fr       */
+/*   Updated: 2022/11/04 00:07:36 by naharagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,24 @@ int	put_error(void)
 
 int	check_int(char *str)
 {
-	int			i;
+	int			sign;
 	long long	n;
 
-	i = 0;
-	if (str[i] == '-')
-		i++;
-	while (str[i])
+	sign = 1;
+	n = 0;
+	if (*str == '-' || *str == '+')
+		if (*str++ == '-')
+			sign = -1;
+	while (*str)
 	{
-		if (str[i] < '0' || str[i] > '9')
+		if (*str < '0' || *str > '9')
 			return (-1);
-		if (str[i])
-			i++;
+		if (sign == 1 && (n > ((LONG_MAX - (*str - '0')) * sign) / 10))
+			return (-1);
+		else if (sign == -1 && (n < ((LONG_MIN - (*str - '0')) * sign) / 10))
+			return (-1);
+		n = n * 10 + ((*str++ - '0') * sign);
 	}
-	n = ft_atoi(str); //atoi is long long??
 	if (n > INT_MAX || n < INT_MIN)
 		return (-1);
 	return (0);

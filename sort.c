@@ -6,7 +6,7 @@
 /*   By: naharagu <naharagu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 23:48:17 by naharagu          #+#    #+#             */
-/*   Updated: 2022/11/03 23:52:58 by naharagu         ###   ########.fr       */
+/*   Updated: 2022/11/04 00:11:22 by naharagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ void	sort_three(t_info *info)
 		if (second > third)
 			operate_sa(info);
 	}
+	else if (first > second && second < third && first < third)
+		operate_sa(info);
 	else if (first < second && second > third && first > third)
 		operate_rra(info);
 }
