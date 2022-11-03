@@ -17,8 +17,8 @@ t_info	*init_info(t_info *info)
 	info = malloc(sizeof(t_info));
 	if (!info)
 		exit(1);
-	info->list_a = ft_lstnew(NULL);
-	info->list_b = ft_lstnew(NULL);
+	info->list_a = ft_lstnew(0);
+	info->list_b = ft_lstnew(0);
 	info->len_all = 0;
 	info->len_a = 0;
 	info->len_b = 0;
