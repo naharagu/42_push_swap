@@ -6,7 +6,7 @@
 /*   By: naharagu <naharagu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 21:17:57 by naharagu          #+#    #+#             */
-/*   Updated: 2022/11/03 22:12:23 by naharagu         ###   ########.fr       */
+/*   Updated: 2022/11/03 22:39:10 by naharagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,16 @@ int	check_int(char *str)
 	return (0);
 }
 
-int	check_sorted(int argc, char **argv)
+int	check_sorted(t_info *info)
 {
-	int	i;
+	t_list	*tmp;
 
-	i = 1;
-	while (i < argc - 1)
+	tmp = info->list_a->next;
+	while (tmp->next)
 	{
-		if (ft_atoi(argv[i]) > ft_atoi(argv[i + 1]))
+		if (tmp->content > tmp->next->content)
 			return (0);
-		i++;
+		tmp = tmp->next;
 	}
 	return (-1);
 }
@@ -84,8 +84,6 @@ int	validate_arg(int argc, char **argv)
 			return (-1);
 		i++;
 	}
-	if (check_sorted(argc, argv) == -1)
-		return (-1);
 	if (check_duplicate(argc, argv) == -1)
 		return (-1);
 	return (0);
@@ -94,6 +92,8 @@ int	validate_arg(int argc, char **argv)
 int	main(int argc, char **argv)
 {
 	if (argc < 2)
+		return (0);
+	else if (argc == 2 && check_int(argv[1]) == 0)
 		return (0);
 	if (validate_arg(argc, argv) == -1)
 		return (put_error());

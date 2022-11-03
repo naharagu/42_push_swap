@@ -6,7 +6,7 @@
 /*   By: naharagu <naharagu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 22:54:50 by naharagu          #+#    #+#             */
-/*   Updated: 2022/11/03 22:14:19 by naharagu         ###   ########.fr       */
+/*   Updated: 2022/11/03 22:34:24 by naharagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct s_info
 }					t_info;
 
 void		push_swap(char **argv);
-int			check_sorted(int argc, char **argv);
+int			check_sorted(t_info *info);
 void		operate_sa(t_info *info);
 void		operate_sb(t_info *info);
 void		operate_ss(t_info *info);

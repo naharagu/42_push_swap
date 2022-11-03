@@ -146,6 +146,11 @@ void	selection_sort(t_info *info)
 		operate_pa(info);
 }
 
+// void	sort_three(t_info *info)
+// {
+
+// }
+
 void	push_swap(char **argv)
 {
 	t_info	*info;
@@ -153,8 +158,12 @@ void	push_swap(char **argv)
 	info = NULL;
 	info = init_info(info);
 	convert_to_list(argv, info);
+	if (check_sorted(info) == -1)
+		return ;
 	if (info->len_a == 2)
 		operate_sa(info);
+	// else if (info->len_a == 3)
+	// 	sort_three(info);
 	else
 		selection_sort(info);
 	put_result(info);
