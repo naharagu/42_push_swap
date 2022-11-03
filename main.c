@@ -6,7 +6,7 @@
 /*   By: naharagu <naharagu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 21:17:57 by naharagu          #+#    #+#             */
-/*   Updated: 2022/11/02 23:55:42by naharagu         ###   ########.fr       */
+/*   Updated: 2022/11/03 22:12:23 by naharagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	put_error(void)
 
 int	check_int(char *str)
 {
-	int		i;
+	int			i;
 	long long	n;
 
 	i = 0;
@@ -29,7 +29,7 @@ int	check_int(char *str)
 	while (str[i])
 	{
 		if (str[i] < '0' || str[i] > '9')
-			return - 1;
+			return (-1);
 		if (str[i])
 			i++;
 	}
@@ -75,12 +75,11 @@ int	check_duplicate(int argc, char **argv)
 
 int	validate_arg(int argc, char **argv)
 {
-	int i;
+	int	i;
 
 	i = 1;
 	while (i < argc)
 	{
-		// printf("arg is %s\n", argv[i]);
 		if (check_int(argv[i]) == -1)
 			return (-1);
 		i++;

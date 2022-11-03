@@ -6,7 +6,7 @@
 /*   By: naharagu <naharagu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 19:25:05 by naharagu          #+#    #+#             */
-/*   Updated: 2022/11/03 18:13:23y naharagu         ###   ########.fr       */
+/*   Updated: 2022/11/03 22:15:23 by naharagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,12 @@ void	operate_sa(t_info *info)
 	int	tmp;
 
 	if (info->len_a < 2)
-		return;
+		return ;
 	tmp = info->list_a->next->content;
 	info->list_a->next->content = info->list_a->next->next->content;
 	info->list_a->next->next->content = tmp;
 	info->output[info->out_count] = SA;
 	info->out_count++;
-	// printf("out_count : %d\n", info->out_count);
-	// printf("output : %d\n", info->output[info->out_count]);
-
 }
 
 void	operate_sb(t_info *info)
@@ -33,7 +30,7 @@ void	operate_sb(t_info *info)
 	int	tmp;
 
 	if (info->len_b < 2)
-		return;
+		return ;
 	tmp = info->list_b->next->content;
 	info->list_b->next->content = info->list_b->next->next->content;
 	info->list_b->next->next->content = tmp;
@@ -43,8 +40,8 @@ void	operate_sb(t_info *info)
 
 void	operate_ss(t_info *info)
 {
-	operate_sa(info->list_a);
-	operate_sb(info->list_b);
+	operate_sa(info);
+	operate_sb(info);
 }
 
 void	operate_pa(t_info *info)
@@ -60,9 +57,7 @@ void	operate_pa(t_info *info)
 		info->list_b->next = NULL;
 	else
 		info->list_b->next = second;
-	// ft_putstr_fd("!pb started!\n", 1);
-	// printf("first is : %d\n", first->content);
-	if (info->len_a  == 0)
+	if (info->len_a == 0)
 		first->next = NULL;
 	else
 		first->next = info->list_a->next;
@@ -71,16 +66,12 @@ void	operate_pa(t_info *info)
 	info->out_count++;
 	info->len_b--;
 	info->len_a++;
-	// printf("len_a: %d\n", info->len_a);
-	// printf("len_b: %d\n", info->len_b);
-	// ft_putstr_fd("!pb done!\n", 1);
 }
 
 void	operate_pb(t_info *info)
 {
 	t_list	*first;
 	t_list	*second;
-
 
 	if (info->len_a == 0)
 		return ;
@@ -90,9 +81,7 @@ void	operate_pb(t_info *info)
 		info->list_a->next = NULL;
 	else
 		info->list_a->next = second;
-	// ft_putstr_fd("!pb started!\n", 1);
-	// printf("first is : %d\n", first->content);
-	if (info->len_b  == 0)
+	if (info->len_b == 0)
 		first->next = NULL;
 	else
 		first->next = info->list_b->next;
@@ -101,9 +90,6 @@ void	operate_pb(t_info *info)
 	info->out_count++;
 	info->len_a--;
 	info->len_b++;
-	// printf("len_a: %d\n", info->len_a);
-	// printf("len_b: %d\n", info->len_b);
-	// ft_putstr_fd("!pb done!\n", 1);
 }
 
 void	operate_ra(t_info *info)
@@ -136,8 +122,8 @@ void	operate_rb(t_info *info)
 
 void	operate_rr(t_info *info)
 {
-	operate_ra(info->list_a);
-	operate_rb(info->list_b);
+	operate_ra(info);
+	operate_rb(info);
 }
 
 void	operate_rra(t_info *info)
@@ -151,8 +137,6 @@ void	operate_rra(t_info *info)
 	last_two = info->list_a;
 	while (last_two->next->next)
 		last_two = last_two->next;
-	// printf("last two is : %d\n", last_two->content);
-	// printf("last is: %d\n", last->content);
 	info->list_a->next = last;
 	last->next = first;
 	last_two->next = NULL;
@@ -180,6 +164,6 @@ void	operate_rrb(t_info *info)
 
 void	operate_rrr(t_info *info)
 {
-	operate_rra(info->list_a);
-	operate_rrb(info->list_b);
+	operate_rra(info);
+	operate_rrb(info);
 }

@@ -18,13 +18,11 @@ t_info	*init_info(t_info *info)
 	if (!info)
 		exit(1);
 	info->list_a = ft_lstnew(NULL);
-	// ft_lstadd_back(&info->list_a, ft_lstnew(NULL));
 	info->list_b = ft_lstnew(NULL);
-	// ft_lstadd_back(&info->list_b, ft_lstnew(NULL));
 	info->len_all = 0;
 	info->len_a = 0;
 	info->len_b = 0;
-	info->output = malloc(sizeof(int *)* 1000);
+	info->output = malloc(sizeof(int *) * 5000);
 	info->output[0] = 0;
 	info->out_count = 0;
 	return (info);
@@ -48,16 +46,13 @@ void	convert_to_list(char **argv, t_info *info)
 	info->len_a = i - 1;
 }
 
-void put_result(t_info *info)
+void	put_result(t_info *info)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	// ft_putstr_fd("put result\n", 1);
-	// ft_putstr_fd(info->output[1], 1);
 	while (info->output[i])
 	{
-		// ft_putstr_fd("result putting...\n", 1);
 		if (info->output[i] == SA)
 			ft_putstr_fd("sa\n", 1);
 		else if (info->output[i] == SB)
@@ -78,7 +73,7 @@ void put_result(t_info *info)
 	}
 }
 
-int		get_min_index(t_list *list)
+int	get_min_index(t_list *list)
 {
 	int		i;
 	int		min_value;
@@ -95,8 +90,6 @@ int		get_min_index(t_list *list)
 		{
 			min_value = tmp->content;
 			min_index = i;
-			// printf("min_value: %d\n", min_value);
-			// printf("min_index: %d\n", min_index);
 		}
 		tmp = tmp->next;
 		i++;
@@ -104,46 +97,40 @@ int		get_min_index(t_list *list)
 	return (min_index);
 }
 
-void prepare_pb(t_info * info, int min_index)
+void	prepare_pb(t_info *info, int min_index)
 {
-	// printf("min_index: %d\n", min_index);
 	if (min_index == 1)
-		return;
-	// else if (min_index < info->len_a / 2)
-	// {
-	// 	while (min_index--)
-	// 		operate_ra(info);
-	// 	ft_putstr_fd("ra done\n", 1);
-	// }
+		return ;
+	else if (min_index < info->len_a / 2)
+	{
+		while (min_index--)
+			operate_ra(info);
+	}
 	else
 	{
-		// printf("prepare_pb: len_a: %d\n", info->len_a);
 		while (min_index < info->len_a + 1)
 		{
 			operate_rra(info);
-			// ft_putstr_fd("!rra done!\n", 1);
 			min_index++;
 		}
 	}
 }
 
-void	selection_sort(t_info * info)
+void	selection_sort(t_info *info)
 {
-	int	min_index;
+	int		min_index;
+	int		i;
+	t_list	*tmp;
 
 	while (info->len_a > 1)
 	{
 		min_index = get_min_index(info->list_a);
 		prepare_pb(info, min_index);
-		// if (check_sorted(info) == -1)
-		// 	break;
 		operate_pb(info);
-
-		int i = 1;
-		t_list *tmp = info->list_a->next;
+		i = 1;
+		tmp = info->list_a->next;
 		while (i <= info->len_a)
 		{
-			// printf("a%d: %d\n", i, tmp->content);
 			tmp = tmp->next;
 			i++;
 		}
@@ -151,11 +138,9 @@ void	selection_sort(t_info * info)
 		tmp = info->list_b->next;
 		while (i <= info->len_b)
 		{
-			// printf("b%d: %d\n", i, tmp->content);
 			tmp = tmp->next;
 			i++;
 		}
-		ft_putchar_fd('\n', 2);
 	}
 	while (info->len_b > 0)
 		operate_pa(info);
@@ -165,44 +150,18 @@ void	push_swap(char **argv)
 {
 	t_info	*info;
 
+	info = NULL;
 	info = init_info(info);
 	convert_to_list(argv, info);
-	// printf("size: %d\n", info->size);
-
-	int j = 1;
-	t_list *tmp2 = info->list_a->next;
-	while (j <= info->len_a)
-	{
-		printf("a%d: %d\n", j, tmp2->content);
-		tmp2 = tmp2->next;
-		j++;
-	}
-	j = 1;
-	tmp2 = info->list_b->next;
-	while (j <= info->len_b)
-	{
-		printf("b%d: %d\n", j, tmp2->content);
-		tmp2 = tmp2->next;
-		j++;
-	}
-	ft_putchar_fd('\n', 2);
-
-	// if (info->size == 2)
-	// 	operate_sa(info);
-	// else if (info->size <= 10)
+	if (info->len_a == 2)
+		operate_sa(info);
+	else
 		selection_sort(info);
+	put_result(info);
+	return ;
+}
 
-	// operate_pb(info);
-	// operate_pb(info);
-	// operate_pa(info);
-	// operate_pa(info);
-	// operate_rra(info);
-	// operate_rra(info);
-	// operate_rra(info);
-	// operate_rra(info);
-	// operate_rra(info);
-
-	int i = 1;
+/* 	int i = 1;
 	t_list *tmp = info->list_a->next;
 	while (i <= info->len_a)
 	{
@@ -218,8 +177,22 @@ void	push_swap(char **argv)
 		tmp = tmp->next;
 		i++;
 	}
-	ft_putchar_fd('\n', 2);
+	ft_putchar_fd('\n', 2); */
 
-	put_result(info);
-	return ;
-}
+/* 	int j = 1;
+	t_list *tmp2 = info->list_a->next;
+	while (j <= info->len_a)
+	{
+		printf("a%d: %d\n", j, tmp2->content);
+		tmp2 = tmp2->next;
+		j++;
+	}
+	j = 1;
+	tmp2 = info->list_b->next;
+	while (j <= info->len_b)
+	{
+		printf("b%d: %d\n", j, tmp2->content);
+		tmp2 = tmp2->next;
+		j++;
+	}
+	ft_putchar_fd('\n', 2); */
