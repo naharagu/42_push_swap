@@ -17,10 +17,10 @@ t_info	*init_info(t_info *info)
 	info = malloc(sizeof(t_info));
 	if (!info)
 		exit(1);
-	info->list_a = NULL;
-	ft_lstadd_back(&info->list_a, ft_lstnew(NULL));
-	info->list_b = NULL;
-	ft_lstadd_back(&info->list_b, ft_lstnew(NULL));
+	info->list_a = ft_lstnew(NULL);
+	// ft_lstadd_back(&info->list_a, ft_lstnew(NULL));
+	info->list_b = ft_lstnew(NULL);
+	// ft_lstadd_back(&info->list_b, ft_lstnew(NULL));
 	info->len_all = 0;
 	info->len_a = 0;
 	info->len_b = 0;
@@ -139,12 +139,23 @@ void	selection_sort(t_info * info)
 		// 	break;
 		operate_pb(info);
 		// ft_putstr_fd("!pb done!\n", 1);
-		// printf("a: No. 0: %d\n", info->list_a->content);
-		// printf("a: No. 1: %d\n", info->list_a->next->content);
-		// printf("a: No. 2: %d\n", info->list_a->next->next->content);
-		// printf("a: No. 3: %d\n", info->list_a->next->next->next->content);
-		// printf("b: No. 0: %d\n", info->list_b->content);
-		// printf("b: No. 1: %d\n", info->list_b->next->content);
+
+		int i = 1;
+		t_list *tmp = info->list_a->next;
+		while (i <= info->len_a)
+		{
+			printf("a%d: %d\n", i, tmp->content);
+			tmp = tmp->next;
+			i++;
+		}
+		i = 1;
+		tmp = info->list_b->next;
+		while (i <= info->len_b)
+		{
+			printf("b%d: %d\n", i, tmp->content);
+			tmp = tmp->next;
+			i++;
+		}
 	}
 	while (info->len_b > 0)
 		operate_pa(info);
@@ -164,34 +175,6 @@ void	push_swap(char **argv)
 		selection_sort(info);
 
 	// operate_pb(info);
-	// operate_rra(info);
-
-	// printf("No. 0: %d\n", info->list_a->content);
-	// printf("No. 1: %d\n", info->list_a->next->content);
-	// printf("No. 2: %d\n", info->list_a->next->next->content);
-	// printf("No. 3: %d\n", info->list_a->next->next->next->content);
-	// printf("No. 4: %d\n", info->list_a->next->next->next->next->content);
-	// operate_pb(info);
-	// printf("No. 0: %d\n", info->list_a->content);
-	// printf("No. 1: %d\n", info->list_a->next->content);
-	// printf("No. 2: %d\n", info->list_a->next->next->content);
-	// printf("No. 3: %d\n", info->list_a->next->next->next->content);
-	// printf("No. 4: %d\n", info->list_a->next->next->next->next->content);
-	// printf("b No. 0: %d\n", info->list_b->content);
-	// printf("b No. 1: %d\n", info->list_b->next->content);
-
-	// t_list *a_tmp;
-	// t_list *b_tmp;
-	// a_tmp = info->list_a->next;
-	// b_tmp = info->list_b->next;
-
-	// int i = 0;
-	// while (a_tmp)
-	// {
-	// 	printf("a%d: %d\n", i, a_tmp->content);
-	// 	a_tmp->next;
-	// 	i++;
-	// }
 
 	put_result(info);
 	return ;
