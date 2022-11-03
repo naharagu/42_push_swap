@@ -6,7 +6,7 @@
 /*   By: naharagu <naharagu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 22:54:50 by naharagu          #+#    #+#             */
-/*   Updated: 2022/11/03 09:25:59 by naharagu         ###   ########.fr       */
+/*   Updated: 2022/11/03 13:09:13 by naharagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,9 @@ typedef struct s_info
 {
 	struct s_list	*list_a;
 	struct s_list	*list_b;
-	int				size;
+	int				len_all;
+	int				len_a;
+	int				len_b;
 	int				out_count;
 	int				*output;
 }					t_info;

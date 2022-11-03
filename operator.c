@@ -6,7 +6,7 @@
 /*   By: naharagu <naharagu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 19:25:05 by naharagu          #+#    #+#             */
-/*   Updated: 2022/11/03 09:48:38 by naharagu         ###   ########.fr       */
+/*   Updated: 2022/11/03 13:57:24 by naharagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	operate_pa(t_info *info)
 {
 	t_list	*tmp;
 
-	if (!info->list_b)
+	if (!info->list_b || !info->list_b->next)
 		return ;
 	tmp = info->list_b->next;
 	info->list_b->next = info->list_b->next->next;
@@ -60,7 +60,7 @@ void	operate_pb(t_info *info)
 {
 	t_list	*tmp;
 
-	if (!info->list_a)
+	if (!info->list_a || !info->list_a->next)
 		return ;
 	tmp = info->list_a->next;
 	info->list_a->next = info->list_a->next->next;
