@@ -6,7 +6,7 @@
 /*   By: naharagu <naharagu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 19:25:05 by naharagu          #+#    #+#             */
-/*   Updated: 2022/11/03 13:57:24 by naharagu         ###   ########.fr       */
+/*   Updated: 2022/11/03 18:13:23y naharagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,26 +47,65 @@ void	operate_pa(t_info *info)
 {
 	t_list	*tmp;
 
-	if (!info->list_b || !info->list_b->next)
-		return ;
+	// if (!info->list_b || !info->list_b->next)
+	// 	return ;
 	tmp = info->list_b->next;
-	info->list_b->next = info->list_b->next->next;
-	ft_lstadd_back(&info->list_a, tmp);
+	if (info->len_b == 1)
+		info->list_b->next = NULL;
+	else
+	{
+		info->list_b->next = info->list_b->next->next;
+		// info->list_b->next = NULL;
+	}
+	ft_putstr_fd("!pa started!\n", 1);
+	if (info->len_a >= 2)
+	{
+		// printf("list_a.next is : %d\n", info->list_a->next);
+		// printf("list_a.next.next is : %d\n", info->list_a->next->next);
+		// printf("tmp before is : %d\n", tmp);
+		tmp->next = info->list_a->next->next;
+		// printf("tmp after is : %d\n", tmp);
+		info->list_a->next = tmp;
+	}
+	else if (info->len_a == 1)
+		ft_lstadd_back(&info->list_a->next, tmp);
+	else
+		ft_lstadd_back(&info->list_a, tmp);
+	// printf("now len_a is : %d\n", info->len_a);
+	// printf("now len_b is : %d\n", info->len_b);
 	info->output[info->out_count] = PA;
 	info->out_count++;
+	info->len_a++;
+	info->len_b--;
+	ft_putstr_fd("!pa done!\n", 1);
 }
 
 void	operate_pb(t_info *info)
 {
 	t_list	*tmp;
 
-	if (!info->list_a || !info->list_a->next)
-		return ;
+	// if (info->len_b == 0)
+	// 	return ;
 	tmp = info->list_a->next;
-	info->list_a->next = info->list_a->next->next;
-	ft_lstadd_back(&info->list_b, tmp);
+	if (info->len_a == 1)
+		info->list_a->next = NULL;
+	else
+		info->list_a->next = info->list_a->next->next;
+	ft_putstr_fd("!pb started!\n", 1);
+	if (info->len_b >= 2)
+	{
+		tmp->next = info->list_a->next->next;
+		info->list_b->next = tmp;
+	}
+	else if (info->len_b == 1)
+		ft_lstadd_back(&info->list_b->next, tmp);
+	else
+		ft_lstadd_back(&info->list_b, tmp);
 	info->output[info->out_count] = PB;
 	info->out_count++;
+	info->len_a--;
+	info->len_b++;
+	ft_putstr_fd("!pb done!\n", 1);
 }
 
 void	operate_ra(t_info *info)
