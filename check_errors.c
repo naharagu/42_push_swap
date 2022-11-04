@@ -6,16 +6,26 @@
 /*   By: naharagu <naharagu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 23:37:13 by naharagu          #+#    #+#             */
-/*   Updated: 2022/11/04 00:07:36 by naharagu         ###   ########.fr       */
+/*   Updated: 2022/11/04 09:32:56 by naharagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+void	free_all(t_info *info)
+{
+	if (info->list_a)
+		free(info->list_a);
+	if (info->list_b)
+		free(info->list_b);
+	if (info->output)
+		free(info->output);
+}
+
 int	put_error(void)
 {
 	ft_putstr_fd("Error\n", 2);
-	return (0);
+	exit(EXIT_FAILURE);
 }
 
 int	check_int(char *str)

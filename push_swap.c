@@ -6,7 +6,7 @@
 /*   By: naharagu <naharagu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 23:14:40 by naharagu          #+#    #+#             */
-/*   Updated: 2022/11/03 23:48:00 by naharagu         ###   ########.fr       */
+/*   Updated: 2022/11/04 09:30:29 by naharagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,15 @@ t_info	*init_info(t_info *info)
 {
 	info = malloc(sizeof(t_info));
 	if (!info)
-		exit(1);
+		exit(EXIT_FAILURE);
 	info->list_a = ft_lstnew(0);
 	info->list_b = ft_lstnew(0);
 	info->len_all = 0;
 	info->len_a = 0;
 	info->len_b = 0;
-	info->output = malloc(sizeof(int *) * 5000);
+	info->output = malloc(sizeof(int) * 5000);
+	if (!info->output)
+		exit(EXIT_FAILURE);
 	info->output[0] = 0;
 	info->out_count = 0;
 	return (info);
@@ -74,7 +76,7 @@ void	prepare_pb(t_info *info, int min_index)
 {
 	if (min_index == 1)
 		return ;
-	else if (min_index < info->len_a / 2)
+	else if (min_index <= info->len_a / 2)
 	{
 		while (min_index--)
 			operate_ra(info);
@@ -105,6 +107,7 @@ void	push_swap(char **argv)
 	else
 		selection_sort(info);
 	put_result(info);
+	free_all(info);
 	return ;
 }
 
