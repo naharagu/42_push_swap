@@ -6,7 +6,7 @@
 /*   By: naharagu <naharagu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 22:54:50 by naharagu          #+#    #+#             */
-/*   Updated: 2022/11/04 09:59:51 by naharagu         ###   ########.fr       */
+/*   Updated: 2022/11/04 10:11:55 by naharagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,10 @@ void				push_swap(char **argv);
 int	validate_arg(int argc, char **argv);
 int					put_error(void);
 int					check_int(char *str);
-int					check_sorted(t_info *info);
+int					check_sorted(t_list *list);
 int					check_duplicate(int argc, char **argv);
+t_info	*init_info(t_info *info);
+void	convert_to_list(char **argv, t_info *info);
 int					get_min_index(t_list *list);
 void				prepare_pb(t_info *info, int min_index);
 void				selection_sort(t_info *info);

@@ -6,7 +6,7 @@
 /*   By: naharagu <naharagu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 23:37:13 by naharagu          #+#    #+#             */
-/*   Updated: 2022/11/04 09:52:41 by naharagu         ###   ########.fr       */
+/*   Updated: 2022/11/04 10:11:35 by naharagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,11 @@ int	check_int(char *str)
 	return (0);
 }
 
-int	check_sorted(t_info *info)
+int	check_sorted(t_list *list)
 {
 	t_list	*tmp;
 
-	tmp = info->list_a->next;
+	tmp = list->next;
 	while (tmp->next)
 	{
 		if (tmp->content > tmp->next->content)

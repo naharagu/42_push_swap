@@ -4,6 +4,7 @@ CFLAGS	=	-Wall -Wextra -Werror -I$(LIFBT)
 # CFLAGS	= -g -fsanitize=address #delete later
 SRCS	= 	main.c \
 			check_errors.c \
+			convert_input.c \
 			push_swap.c \
 			operate_s_p.c \
 			operate_r.c \

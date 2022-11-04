@@ -6,7 +6,7 @@
 /*   By: naharagu <naharagu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 23:48:17 by naharagu          #+#    #+#             */
-/*   Updated: 2022/11/04 00:11:22 by naharagu         ###   ########.fr       */
+/*   Updated: 2022/11/04 10:13:25 by naharagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,14 @@
 void	selection_sort(t_info *info)
 {
 	int		min_index;
-	int		i;
-	t_list	*tmp;
 
 	while (info->len_a > 1)
 	{
+		if (check_sorted(info->list_a) == -1)
+			break;
 		min_index = get_min_index(info->list_a);
 		prepare_pb(info, min_index);
 		operate_pb(info);
-		i = 1;
-		tmp = info->list_a->next;
-		while (i++ <= info->len_a)
-			tmp = tmp->next;
-		i = 1;
-		tmp = info->list_b->next;
-		while (i++ <= info->len_b)
-			tmp = tmp->next;
 	}
 	while (info->len_b > 0)
 		operate_pa(info);
