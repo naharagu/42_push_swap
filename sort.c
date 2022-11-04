@@ -6,7 +6,7 @@
 /*   By: naharagu <naharagu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 23:48:17 by naharagu          #+#    #+#             */
-/*   Updated: 2022/11/04 10:13:25 by naharagu         ###   ########.fr       */
+/*   Updated: 2022/11/04 14:58:19 by naharagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,27 +30,27 @@ void	selection_sort(t_info *info)
 
 void	sort_three(t_info *info)
 {
-	int	first;
-	int	second;
-	int	third;
+	int	a;
+	int	b;
+	int	c;
 
-	first = info->list_a->next->content;
-	second = info->list_a->next->next->content;
-	third = info->list_a->next->next->next->content;
-	if (first < second && first < third)
+	a = info->list_a->next->content;
+	b = info->list_a->next->next->content;
+	c = info->list_a->next->next->next->content;
+	if (a < b && a < c)
 	{
 		operate_sa(info);
-		if (second > third)
+		if (b > c)
 			operate_ra(info);
 	}
-	else if (first > second && first > third)
+	else if (a > b && a > c)
 	{
 		operate_ra(info);
-		if (second > third)
+		if (b > c)
 			operate_sa(info);
 	}
-	else if (first > second && second < third && first < third)
+	else if (a > b && b < c && a < c)
 		operate_sa(info);
-	else if (first < second && second > third && first > third)
+	else if (a < b && b > c && a > c)
 		operate_rra(info);
 }

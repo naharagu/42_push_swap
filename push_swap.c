@@ -6,7 +6,7 @@
 /*   By: naharagu <naharagu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 23:14:40 by naharagu          #+#    #+#             */
-/*   Updated: 2022/11/04 10:11:15 by naharagu         ###   ########.fr       */
+/*   Updated: 2022/11/04 14:58:25 by naharagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	prepare_pb(t_info *info, int min_index)
 		return ;
 	else if (min_index <= info->len_a / 2)
 	{
-		while (min_index--)
+		while (min_index-- > 1)
 			operate_ra(info);
 	}
 	else
