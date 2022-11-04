@@ -6,7 +6,7 @@
 /*   By: naharagu <naharagu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 23:37:13 by naharagu          #+#    #+#             */
-/*   Updated: 2022/11/04 09:32:56 by naharagu         ###   ########.fr       */
+/*   Updated: 2022/11/04 09:52:41 by naharagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,25 @@
 
 void	free_all(t_info *info)
 {
-	if (info->list_a)
+	t_list	*tmp;
+
+	while (info->list_a->next)
+	{
+		tmp = info->list_a->next;
 		free(info->list_a);
-	if (info->list_b)
+		info->list_a = tmp;
+	}
+	while (info->list_b->next)
+	{
+		tmp = info->list_b->next;
 		free(info->list_b);
+		info->list_b = tmp;
+	}
+	free(info->list_a);
+	free(info->list_b);
 	if (info->output)
 		free(info->output);
+	free(info);
 }
 
 int	put_error(void)
