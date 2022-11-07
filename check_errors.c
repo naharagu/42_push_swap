@@ -6,40 +6,11 @@
 /*   By: naharagu <naharagu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 23:37:13 by naharagu          #+#    #+#             */
-/*   Updated: 2022/11/04 10:11:35 by naharagu         ###   ########.fr       */
+/*   Updated: 2022/11/04 20:48:27 by naharagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	free_all(t_info *info)
-{
-	t_list	*tmp;
-
-	while (info->list_a->next)
-	{
-		tmp = info->list_a->next;
-		free(info->list_a);
-		info->list_a = tmp;
-	}
-	while (info->list_b->next)
-	{
-		tmp = info->list_b->next;
-		free(info->list_b);
-		info->list_b = tmp;
-	}
-	free(info->list_a);
-	free(info->list_b);
-	if (info->output)
-		free(info->output);
-	free(info);
-}
-
-int	put_error(void)
-{
-	ft_putstr_fd("Error\n", 2);
-	exit(EXIT_FAILURE);
-}
 
 int	check_int(char *str)
 {
@@ -98,4 +69,33 @@ int	check_duplicate(int argc, char **argv)
 		i++;
 	}
 	return (0);
+}
+
+void	free_all(t_info *info)
+{
+	t_list	*tmp;
+
+	while (info->list_a->next)
+	{
+		tmp = info->list_a->next;
+		free(info->list_a);
+		info->list_a = tmp;
+	}
+	while (info->list_b->next)
+	{
+		tmp = info->list_b->next;
+		free(info->list_b);
+		info->list_b = tmp;
+	}
+	free(info->list_a);
+	free(info->list_b);
+	if (info->output)
+		free(info->output);
+	free(info);
+}
+
+int	put_error(void)
+{
+	ft_putstr_fd("Error\n", 2);
+	exit(EXIT_FAILURE);
 }
