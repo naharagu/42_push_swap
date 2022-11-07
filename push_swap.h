@@ -6,7 +6,7 @@
 /*   By: naharagu <naharagu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 22:54:50 by naharagu          #+#    #+#             */
-/*   Updated: 2022/11/07 20:48:44 by naharagu         ###   ########.fr       */
+/*   Updated: 2022/11/07 21:33:03 by naharagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,14 @@ typedef struct s_info
 	int				*output;
 }					t_info;
 
-void				push_swap(char **argv);
+void				push_swap(char **argv, int argc);
 int	validate_arg(int argc, char **argv);
 int					put_error(void);
 int					check_int(char *str);
 int					check_sorted(t_list *list);
 int					check_duplicate(int argc, char **argv);
 t_info	*init_info(t_info *info);
-void	convert_to_list(char **argv, t_info *info);
+void	convert_to_list(char **argv, int argc, t_info *info);
 int					get_min_index(t_list *list);
 void				prepare_pb(t_info *info, int min_index);
 void				selection_sort(t_info *info);

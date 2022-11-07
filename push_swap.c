@@ -6,7 +6,7 @@
 /*   By: naharagu <naharagu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 23:14:40 by naharagu          #+#    #+#             */
-/*   Updated: 2022/11/04 20:47:00 by naharagu         ###   ########.fr       */
+/*   Updated: 2022/11/07 21:32:07 by naharagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,13 @@ void	prepare_pb(t_info *info, int min_index)
 	}
 }
 
-void	push_swap(char **argv)
+void	push_swap(char **argv, int argc)
 {
 	t_info	*info;
 
 	info = NULL;
 	info = init_info(info);
-	convert_to_list(argv, info);
+	convert_to_list(argv, argc, info);
 	if (check_sorted(info->list_a) == -1)
 		return ;
 	if (info->len_a == 2)

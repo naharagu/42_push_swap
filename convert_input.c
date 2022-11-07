@@ -22,7 +22,7 @@ t_info	*init_info(t_info *info)
 	info->len_all = 0;
 	info->len_a = 0;
 	info->len_b = 0;
-	info->output = malloc(sizeof(int) * 5000);
+	info->output = malloc(sizeof(int) * 10000);
 	if (!info->output)
 		exit(EXIT_FAILURE);
 	info->output[0] = 0;
@@ -67,74 +67,133 @@ int	*quick_sort_int(int *x, int left, int right)
 	return (x);
 }
 
-void	compression(char **argv, t_info *info)
+int	*compression_helper(int *sorted, int *compressed, char **argv, int argc)
 {
 	int	i;
 	int	j;
-	int	*original;
-	int	*sorted;
 
-	original = malloc(sizeof(int) * (info->len_all));
-	sorted = malloc(sizeof(int) * (info->len_all));
-	if (!original || !sorted)
-		exit(EXIT_FAILURE);
 	i = 1;
-	while (argv[i])
+	j = 1;
+	while (i < argc + 1)
 	{
-		original[i - 1] = ft_atoi(argv[i]);
-		sorted[i - 1] = ft_atoi(argv[i]);
-		i++;
-	}
-	sorted = quick_sort_int(sorted, 0, info->len_all - 1);
-	i = 0;
-	// while (sorted[i])
-	// {
-	// 	printf("no %d is: %d \n", i, sorted[i]);
-	// 	i++;
-	// }
-
-	i = 0;
-	j = 0;
-	while (sorted[i])
-	{
-		while (original[j])
+		while (j < argc)
 		{
-			if (sorted[i] == original[j])
+			if (sorted[i - 1] == ft_atoi(argv[j]))
 			{
-				original[j] = i;
-				printf("no %d is: %d \n", i, original[j]);
-				break;
+				compressed[j - 1] = i;
+				// printf("sorted no %d is: %d \n", i, sorted[i  1]);
+				// printf("found no %d is: %d \n", j, compressed[j -- 1]);
+				break ;
 			}
 			j++;
 		}
 		i++;
+		j = 1;
 	}
-
-	i = 0;
-	while (original[i])
-	{
-		printf("no %d is: %d \n", i, original[i]);
-		i++;
-	}
-	// free(original);
-	free(sorted);
+	return (compressed);
 }
 
-void	convert_to_list(char **argv, t_info *info)
+int	*compression(char **argv, int argc)
 {
-	int		i;
-	t_list	*tmp;
-	int		value;
+	int	i;
+	int	*sorted;
+	int	*compressed;
 
+	sorted = malloc(sizeof(int) * 10000);
+	compressed = malloc(sizeof(int) * 10000);
+	if (!sorted || !compressed)
+		exit(EXIT_FAILURE);
 	i = 1;
 	while (argv[i])
 	{
-		value = ft_atoi(argv[i]);
-		tmp = ft_lstnew(value);
+		sorted[i - 1] = ft_atoi(argv[i]);
+		compressed[i - 1] = ft_atoi(argv[i]);
+		i++;
+	}
+	sorted = quick_sort_int(sorted, 0, argc - 2);
+	compressed = compression_helper(sorted, compressed, argv, argc);
+	free(sorted);
+	return (compressed);
+}
+
+void	convert_to_list(char **argv, int argc, t_info *info)
+{
+	int		i;
+	t_list	*tmp;
+	int		*compressed;
+
+	compressed = compression(argv, argc);
+	i = 0;
+	while (compressed[i])
+	{
+		tmp = ft_lstnew(compressed[i]);
 		ft_lstadd_back(&info->list_a, tmp);
 		i++;
 	}
+	free(compressed);
 	info->len_all = i - 1;
 	info->len_a = i - 1;
-	compression(argv, info);
+
+	int j = 0;
+	tmp = info->list_a->next;
+	while (tmp)
+	{
+		printf("a%d: %d\n", j, tmp->content);
+		tmp = tmp->next;
+		j++;
+	}
+
 }
+
+/*
+void	compression(char **argv, t_info *info)
+{
+	int	i;
+	int	j;
+	int	*sorted;
+	int	*compressed;
+
+	sorted = malloc(sizeof(int) * (info->len_all));
+	compressed = malloc(sizeof(int) * (info->len_all));
+	if (!sorted || !compressed)
+		exit(EXIT_FAILURE);
+	i = 0;
+	while (argv[++i])
+	{
+		sorted[i - 1] = ft_atoi(argv[i]);
+		compressed[i - 1] = ft_atoi(argv[i]);
+	}
+	sorted = quick_sort_int(sorted, 0, info->len_all - 1);
+	// i = 0;
+	// while (sorted[i++])
+	// {
+		printf("sorted no %d is: %d \n", i, sorted[i]);
+	// 	i++;
+	// }
+	i = 1;
+	j = 1;
+	while (sorted[i - 1])
+	{
+		while (argv[j])
+		{
+			if (sorted[i - 1] == ft_atoi(argv[j]))
+			{
+				compressed[j - 1] = i;
+				// printf("found no %d is: %d \n", i, compressed[j]);
+				break ;
+			}
+			j++;
+		}
+		j = 0;
+		i++;
+	}
+	i = 0;
+	// while (compressed[i])
+	// {
+	// 	printf("no %d is: %d \n", i, compressed[i]);
+	// 	i++;
+	// }
+	free(compressed);
+	free(sorted);
+}
+ */
