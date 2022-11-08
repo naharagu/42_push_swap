@@ -39,7 +39,7 @@ int	check_int(char *str)
 
 int	check_sorted_args(int argc, char **argv)
 {
-	int i;
+	int	i;
 
 	i = 1;
 	while (i < argc - 1)

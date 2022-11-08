@@ -6,7 +6,7 @@
 /*   By: naharagu <naharagu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 10:05:45 by naharagu          #+#    #+#             */
-/*   Updated: 2022/11/08 21:34:12 by naharagu         ###   ########.fr       */
+/*   Updated: 2022/11/08 21:42:19 by naharagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	*compression_helper(int *sorted, int *compressed, char **argv, int argc)
 
 	i = 1;
 	j = 1;
-	while (i < argc + 1)
+	while (i < argc)
 	{
 		while (j < argc)
 		{
@@ -113,15 +113,6 @@ void	convert_to_list(char **argv, int argc, t_info *info)
 	free(compressed);
 	info->len_all = i;
 	info->len_a = i;
-
-int j = 0;
-tmp = info->list_a;
-while (tmp)
-{
-	printf("a%d: %d\n", j, tmp->content);
-	tmp = tmp->next;
-	j++;
-}
 }
 
 // printf("len: %d\n", info->len_a);
