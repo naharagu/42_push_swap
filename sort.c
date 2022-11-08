@@ -6,7 +6,7 @@
 /*   By: naharagu <naharagu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 23:48:17 by naharagu          #+#    #+#             */
-/*   Updated: 2022/11/04 14:58:19 by naharagu         ###   ########.fr       */
+/*   Updated: 2022/11/08 18:47:36 by naharagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	sort_three(t_info *info)
 	a = info->list_a->next->content;
 	b = info->list_a->next->next->content;
 	c = info->list_a->next->next->next->content;
+	// printf("%d %d %d\n", a, b, c);
 	if (a < b && a < c)
 	{
 		operate_sa(info);

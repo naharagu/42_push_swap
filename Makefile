@@ -10,6 +10,7 @@ SRCS	= 	main.c \
 			operate_r.c \
 			operate_rr.c \
 			sort.c \
+			quick_sort.c \
 			put_result.c \
 			validate_input.c
 

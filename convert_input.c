@@ -81,8 +81,6 @@ int	*compression_helper(int *sorted, int *compressed, char **argv, int argc)
 			if (sorted[i - 1] == ft_atoi(argv[j]))
 			{
 				compressed[j - 1] = i;
-				// printf("sorted no %d is: %d \n", i, sorted[i  1]);
-				// printf("found no %d is: %d \n", j, compressed[j -- 1]);
 				break ;
 			}
 			j++;
@@ -131,18 +129,19 @@ void	convert_to_list(char **argv, int argc, t_info *info)
 		i++;
 	}
 	free(compressed);
-	info->len_all = i - 1;
-	info->len_a = i - 1;
+	info->len_all = i;
+	info->len_a = i;
+	// printf("len: %d\n", info->len_a);
 
-	int j = 0;
-	tmp = info->list_a->next;
-	while (tmp)
-	{
-		printf("a%d: %d\n", j, tmp->content);
-		tmp = tmp->next;
-		j++;
-	}
 
+	// int j = 0;
+	// tmp = info->list_a;
+	// while (tmp)
+	// {
+	// 	printf("a%d: %d\n", j, tmp->content);
+	// 	tmp = tmp->next;
+	// 	j++;
+	// }
 }
 
 /*
