@@ -6,7 +6,7 @@
 /*   By: naharagu <naharagu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 23:37:13 by naharagu          #+#    #+#             */
-/*   Updated: 2022/11/04 20:48:27 by naharagu         ###   ########.fr       */
+/*   Updated: 2022/11/08 21:29:21 by naharagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,19 @@ int	check_int(char *str)
 	if (n > INT_MAX || n < INT_MIN)
 		return (-1);
 	return (0);
+}
+
+int	check_sorted_args(int argc, char **argv)
+{
+	int i;
+
+	i = 1;
+	while (i < argc - 1)
+	{
+		if (argv[i] > argv[i + 1])
+			return (0);
+	}
+	return (-1);
 }
 
 int	check_sorted(t_list *list)
@@ -69,29 +82,6 @@ int	check_duplicate(int argc, char **argv)
 		i++;
 	}
 	return (0);
-}
-
-void	free_all(t_info *info)
-{
-	t_list	*tmp;
-
-	while (info->list_a->next)
-	{
-		tmp = info->list_a->next;
-		free(info->list_a);
-		info->list_a = tmp;
-	}
-	while (info->list_b->next)
-	{
-		tmp = info->list_b->next;
-		free(info->list_b);
-		info->list_b = tmp;
-	}
-	free(info->list_a);
-	free(info->list_b);
-	if (info->output)
-		free(info->output);
-	free(info);
 }
 
 int	put_error(void)

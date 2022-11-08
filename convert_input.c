@@ -6,29 +6,11 @@
 /*   By: naharagu <naharagu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 10:05:45 by naharagu          #+#    #+#             */
-/*   Updated: 2022/11/04 22:03:15y naharagu         ###   ########.fr       */
+/*   Updated: 2022/11/08 21:34:12 by naharagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-t_info	*init_info(t_info *info)
-{
-	info = malloc(sizeof(t_info));
-	if (!info)
-		exit(EXIT_FAILURE);
-	info->list_a = ft_lstnew(0);
-	info->list_b = ft_lstnew(0);
-	info->len_all = 0;
-	info->len_a = 0;
-	info->len_b = 0;
-	info->output = malloc(sizeof(int) * 10000);
-	if (!info->output)
-		exit(EXIT_FAILURE);
-	info->output[0] = 0;
-	info->out_count = 0;
-	return (info);
-}
 
 void	swap_int(int *x, int i, int j)
 {
@@ -97,8 +79,8 @@ int	*compression(char **argv, int argc)
 	int	*sorted;
 	int	*compressed;
 
-	sorted = malloc(sizeof(int) * 10000);
-	compressed = malloc(sizeof(int) * 10000);
+	sorted = malloc(sizeof(int) * 40000);
+	compressed = malloc(sizeof(int) * 40000);
 	if (!sorted || !compressed)
 		exit(EXIT_FAILURE);
 	i = 1;
@@ -131,18 +113,26 @@ void	convert_to_list(char **argv, int argc, t_info *info)
 	free(compressed);
 	info->len_all = i;
 	info->len_a = i;
-	// printf("len: %d\n", info->len_a);
 
-
-	// int j = 0;
-	// tmp = info->list_a;
-	// while (tmp)
-	// {
-	// 	printf("a%d: %d\n", j, tmp->content);
-	// 	tmp = tmp->next;
-	// 	j++;
-	// }
+int j = 0;
+tmp = info->list_a;
+while (tmp)
+{
+	printf("a%d: %d\n", j, tmp->content);
+	tmp = tmp->next;
+	j++;
 }
+}
+
+// printf("len: %d\n", info->len_a);
+// int j = 0;
+// tmp = info->list_a;
+// while (tmp)
+// {
+// 	printf("a%d: %d\n", j, tmp->content);
+// 	tmp = tmp->next;
+// 	j++;
+// }
 
 /*
 void	compression(char **argv, t_info *info)

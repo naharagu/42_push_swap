@@ -1,7 +1,6 @@
 CC		=	gcc
 LIFBT	= 	./libft
 CFLAGS	=	-Wall -Wextra -Werror -I$(LIFBT)
-# CFLAGS	= -g -fsanitize=address #delete later
 SRCS	= 	main.c \
 			check_errors.c \
 			convert_input.c \
@@ -10,7 +9,6 @@ SRCS	= 	main.c \
 			operate_r.c \
 			operate_rr.c \
 			sort.c \
-			quick_sort.c \
 			put_result.c \
 			validate_input.c
 

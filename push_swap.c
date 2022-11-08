@@ -6,7 +6,7 @@
 /*   By: naharagu <naharagu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 23:14:40 by naharagu          #+#    #+#             */
-/*   Updated: 2022/11/07 21:32:07 by naharagu         ###   ########.fr       */
+/*   Updated: 2022/11/08 21:07:14 by naharagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,45 +68,11 @@ void	push_swap(char **argv, int argc)
 		operate_sa(info);
 	else if (info->len_a == 3)
 		sort_three(info);
+	else if (info->len_a <= 10)
+		sort_ten(info);
 	else
-		selection_sort(info);
+		sort_big(info);
 	put_result(info);
 	free_all(info);
 	return ;
 }
-
-/* 	int i = 1;
-	t_list *tmp = info->list_a->next;
-	while (i <= info->len_a)
-	{
-		printf("a%d: %d\n", i, tmp->content);
-		tmp = tmp->next;
-		i++;
-	}
-	i = 1;
-	tmp = info->list_b->next;
-	while (i <= info->len_b)
-	{
-		printf("b%d: %d\n", i, tmp->content);
-		tmp = tmp->next;
-		i++;
-	}
-	ft_putchar_fd('\n', 2); */
-
-/* 	int j = 1;
-	t_list *tmp2 = info->list_a->next;
-	while (j <= info->len_a)
-	{
-		printf("a%d: %d\n", j, tmp2->content);
-		tmp2 = tmp2->next;
-		j++;
-	}
-	j = 1;
-	tmp2 = info->list_b->next;
-	while (j <= info->len_b)
-	{
-		printf("b%d: %d\n", j, tmp2->content);
-		tmp2 = tmp2->next;
-		j++;
-	}
-	ft_putchar_fd('\n', 2); */

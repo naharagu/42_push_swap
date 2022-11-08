@@ -6,11 +6,23 @@
 /*   By: naharagu <naharagu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 09:58:18 by naharagu          #+#    #+#             */
-/*   Updated: 2022/11/04 15:35:19 by naharagu         ###   ########.fr       */
+/*   Updated: 2022/11/08 21:29:57 by naharagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+// void optimize_result(t_info *info)
+// {
+// 	int	i;
+
+// 	i = 0;
+// 	while (i < info->out_count - 1)
+// 	{
+// 		if (info->output[i] == PA && info->output[i + 1] == PB)
+
+// 	}
+// }
 
 void	put_result(t_info *info)
 {
@@ -19,6 +31,8 @@ void	put_result(t_info *info)
 	i = 0;
 	while (info->output[i])
 	{
+		if (info->output[i] == PB && info->output[i + 1] == PA)
+			i += 2;
 		if (info->output[i] == SA)
 			ft_putstr_fd("sa\n", 1);
 		else if (info->output[i] == SB)
@@ -37,4 +51,27 @@ void	put_result(t_info *info)
 			ft_putstr_fd("rrb\n", 1);
 		i++;
 	}
+}
+
+void	free_all(t_info *info)
+{
+	t_list	*tmp;
+
+	while (info->list_a->next)
+	{
+		tmp = info->list_a->next;
+		free(info->list_a);
+		info->list_a = tmp;
+	}
+	while (info->list_b->next)
+	{
+		tmp = info->list_b->next;
+		free(info->list_b);
+		info->list_b = tmp;
+	}
+	free(info->list_a);
+	free(info->list_b);
+	if (info->output)
+		free(info->output);
+	free(info);
 }
