@@ -6,7 +6,7 @@
 /*   By: naharagu <naharagu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 23:48:17 by naharagu          #+#    #+#             */
-/*   Updated: 2022/11/08 21:19:45 by naharagu         ###   ########.fr       */
+/*   Updated: 2022/11/09 16:10:09 by naharagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,29 +57,25 @@ void	sort_ten(t_info *info)
 
 void	sort_big(t_info *info)
 {
-	int	i;
-	int	j;
-	int	digit;
+	int	radix;
 	int	count;
 
-	i = 0;
-	digit = 0;
-	while (i < info->len_all)
+	radix = 0;
+	while (1)
 	{
 		count = 0;
 		while (count++ < info->len_all)
 		{
-			if ((info->list_a->next->content >> digit & 1) == 1)
+			if (((info->list_a->next->content >> radix) & 1) == 1)
 				operate_ra(info);
 			else
 				operate_pb(info);
 		}
-		j = info->len_b;
-		while (j--)
+		count = info->len_b;
+		while (count--)
 			operate_pa(info);
 		if (check_sorted(info->list_a) == -1)
 			return ;
-		i++;
-		digit++;
+		radix++;
 	}
 }
