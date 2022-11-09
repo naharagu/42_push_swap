@@ -6,7 +6,7 @@
 /*   By: naharagu <naharagu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 22:54:50 by naharagu          #+#    #+#             */
-/*   Updated: 2022/11/08 21:29:05 by naharagu         ###   ########.fr       */
+/*   Updated: 2022/11/09 08:28:10 by naharagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,7 @@ void				operate_rrb(t_info *info);
 void				operate_rrr(t_info *info);
 void				put_result(t_info *info);
 void				free_all(t_info *info);
+char				**ft_split_and_count(char const *s, char c, int *argc);
+void				free_argv(char **argv, int argc);
 
 #endif

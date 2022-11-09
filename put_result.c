@@ -6,23 +6,11 @@
 /*   By: naharagu <naharagu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 09:58:18 by naharagu          #+#    #+#             */
-/*   Updated: 2022/11/08 21:29:57 by naharagu         ###   ########.fr       */
+/*   Updated: 2022/11/09 08:35:43 by naharagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-// void optimize_result(t_info *info)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (i < info->out_count - 1)
-// 	{
-// 		if (info->output[i] == PA && info->output[i + 1] == PB)
-
-// 	}
-// }
 
 void	put_result(t_info *info)
 {
@@ -74,4 +62,17 @@ void	free_all(t_info *info)
 	if (info->output)
 		free(info->output);
 	free(info);
+}
+
+void	free_argv(char **argv, int argc)
+{
+	int	count;
+
+	count = 0;
+	while (count < argc)
+	{
+		free(argv[count]);
+		count++;
+	}
+	free(argv);
 }

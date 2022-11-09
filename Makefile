@@ -10,7 +10,8 @@ SRCS	= 	main.c \
 			operate_rr.c \
 			sort.c \
 			put_result.c \
-			validate_input.c
+			validate_input.c \
+			ft_split_and_count.c
 
 NAME	=	push_swap
 
