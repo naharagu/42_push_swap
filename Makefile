@@ -1,6 +1,6 @@
 CC		=	gcc
 LIFBT	= 	./libft
-CFLAGS	=	-Wall -Wextra -Werror -I$(LIFBT) -g -fsanitize=address
+CFLAGS	=	-Wall -Wextra -Werror -I$(LIFBT)
 SRCS	= 	main.c \
 			check_errors.c \
 			convert_input.c \
