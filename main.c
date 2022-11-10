@@ -6,16 +6,11 @@
 /*   By: naharagu <naharagu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 21:17:57 by naharagu          #+#    #+#             */
-/*   Updated: 2022/11/10 09:50:40 by naharagu         ###   ########.fr       */
+/*   Updated: 2022/11/10 10:05:54 by naharagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-__attribute__((destructor))
-static void destructor() {
-    system("leaks -q push_swap");
-}
 
 int	main(int argc, char **argv)
 {
@@ -34,7 +29,11 @@ int	main(int argc, char **argv)
 	if (!argv)
 		return (put_error());
 	if (validate_arg(argc, argv) == -1)
+	{
+		if (flag)
+			free_argv(argv, argc);
 		return (put_error());
+	}
 	push_swap(argv, argc);
 	if (flag)
 		free_argv(argv, argc);

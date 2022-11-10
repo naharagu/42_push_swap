@@ -6,7 +6,7 @@
 /*   By: naharagu <naharagu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 10:05:45 by naharagu          #+#    #+#             */
-/*   Updated: 2022/11/10 09:25:54 by naharagu         ###   ########.fr       */
+/*   Updated: 2022/11/10 09:58:51 by naharagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,66 +115,3 @@ void	convert_to_list(char **argv, int argc, t_info *info)
 	info->len_all = i;
 	info->len_a = i;
 }
-
-// printf("len: %d\n", info->len_a);
-// int j = 0;
-// tmp = info->list_a;
-// while (tmp)
-// {
-// 	printf("a%d: %d\n", j, tmp->content);
-// 	tmp = tmp->next;
-// 	j++;
-// }
-
-/*
-void	compression(char **argv, t_info *info)
-{
-	int	i;
-	int	j;
-	int	*sorted;
-	int	*compressed;
-
-	sorted = malloc(sizeof(int) * (info->len_all));
-	compressed = malloc(sizeof(int) * (info->len_all));
-	if (!sorted || !compressed)
-		exit(EXIT_FAILURE);
-	i = 0;
-	while (argv[++i])
-	{
-		sorted[i - 1] = ft_atoi(argv[i]);
-		compressed[i - 1] = ft_atoi(argv[i]);
-	}
-	sorted = quick_sort_int(sorted, 0, info->len_all - 1);
-	// i = 0;
-	// while (sorted[i++])
-	// {
-		printf("sorted no %d is: %d \n", i, sorted[i]);
-	// 	i++;
-	// }
-	i = 1;
-	j = 1;
-	while (sorted[i - 1])
-	{
-		while (argv[j])
-		{
-			if (sorted[i - 1] == ft_atoi(argv[j]))
-			{
-				compressed[j - 1] = i;
-				// printf("found no %d is: %d \n", i, compressed[j]);
-				break ;
-			}
-			j++;
-		}
-		j = 0;
-		i++;
-	}
-	i = 0;
-	// while (compressed[i])
-	// {
-	// 	printf("no %d is: %d \n", i, compressed[i]);
-	// 	i++;
-	// }
-	free(compressed);
-	free(sorted);
-}
- */

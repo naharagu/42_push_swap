@@ -6,7 +6,7 @@
 /*   By: naharagu <naharagu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 23:14:40 by naharagu          #+#    #+#             */
-/*   Updated: 2022/11/08 21:07:14 by naharagu         ###   ########.fr       */
+/*   Updated: 2022/11/10 10:04:44 by naharagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,10 @@ void	push_swap(char **argv, int argc)
 	info = init_info(info);
 	convert_to_list(argv, argc, info);
 	if (check_sorted(info->list_a) == -1)
+	{
+		free_all(info);
 		return ;
+	}
 	if (info->len_a == 2)
 		operate_sa(info);
 	else if (info->len_a == 3)
