@@ -6,11 +6,16 @@
 /*   By: naharagu <naharagu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 21:17:57 by naharagu          #+#    #+#             */
-/*   Updated: 2022/11/09 08:30:25 by naharagu         ###   ########.fr       */
+/*   Updated: 2022/11/10 09:50:40 by naharagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+__attribute__((destructor))
+static void destructor() {
+    system("leaks -q push_swap");
+}
 
 int	main(int argc, char **argv)
 {
