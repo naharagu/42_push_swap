@@ -6,7 +6,7 @@
 /*   By: naharagu <naharagu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 10:05:45 by naharagu          #+#    #+#             */
-/*   Updated: 2022/11/10 09:58:51 by naharagu         ###   ########.fr       */
+/*   Updated: 2022/11/10 10:08:00 by naharagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int	*compression(char **argv, int argc)
 	}
 	sorted = quick_sort_int(sorted, 0, argc - 2);
 	compressed = compression_helper(sorted, compressed, argv, argc);
-	compressed[argc- 1] = 0;
+	compressed[argc - 1] = 0;
 	free(sorted);
 	return (compressed);
 }
